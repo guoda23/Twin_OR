@@ -1,0 +1,784 @@
+@prefix : <http://www.semanticweb.org/Twin_OR/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/Twin_OR/> .
+
+<http://www.semanticweb.org/Twin_OR/> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/Twin_OR/hasActor
+:hasActor rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/hasCapability
+:hasCapability rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/step
+:step rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/Twin_OR/actor
+:actor rdf:type owl:ObjectProperty ;
+       owl:inverseOf :actsIn .
+
+
+###  http://www.semanticweb.org/Twin_OR/actsIn
+:actsIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/alternativePhase
+:alternativePhase rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Phase ;
+                  rdfs:range :Phase ;
+                  rdfs:comment "When the phase in the domain fails the actor(s) is/are redirected to the phase in the range." .
+
+
+###  http://www.semanticweb.org/Twin_OR/belongsToPlan
+:belongsToPlan rdf:type owl:ObjectProperty ;
+               owl:inverseOf :hasPhase .
+
+
+###  http://www.semanticweb.org/Twin_OR/blockPosition
+:blockPosition rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/co-occur
+:co-occur rdf:type owl:ObjectProperty ,
+                   owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/followedBy
+:followedBy rdf:type owl:ObjectProperty ;
+            owl:inverseOf :follows ;
+            rdfs:domain :Step ;
+            rdfs:range :Step .
+
+
+###  http://www.semanticweb.org/Twin_OR/follows
+:follows rdf:type owl:ObjectProperty ;
+         rdfs:domain :Step ;
+         rdfs:range :Step .
+
+
+###  http://www.semanticweb.org/Twin_OR/hasCapability
+:hasCapability rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/hasPhase
+:hasPhase rdf:type owl:ObjectProperty ;
+          rdfs:domain :Plan ;
+          rdfs:range :Phase .
+
+
+###  http://www.semanticweb.org/Twin_OR/hasPlan
+:hasPlan rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         owl:inverseOf :partOfEvent ;
+         rdfs:domain :Event ;
+         rdfs:range :Plan .
+
+
+###  http://www.semanticweb.org/Twin_OR/hasStep
+:hasStep rdf:type owl:ObjectProperty ;
+         owl:inverseOf :inPhase ;
+         rdfs:domain :Phase ;
+         rdfs:range :Step .
+
+
+###  http://www.semanticweb.org/Twin_OR/helperStep
+:helperStep rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isHelperStepOf .
+
+
+###  http://www.semanticweb.org/Twin_OR/inPhase
+:inPhase rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/isHelperStepOf
+:isHelperStepOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/materialUsed
+:materialUsed rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/partOfEvent
+:partOfEvent rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/performedInStep
+:performedInStep rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 owl:inverseOf :stepAction .
+
+
+###  http://www.semanticweb.org/Twin_OR/phaseTask
+:phaseTask rdf:type owl:ObjectProperty ;
+           owl:inverseOf :taskPhase ;
+           rdfs:domain :Phase ;
+           rdfs:range :Task .
+
+
+###  http://www.semanticweb.org/Twin_OR/stepAction
+:stepAction rdf:type owl:ObjectProperty ;
+            rdfs:domain :Step ;
+            rdfs:range :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/takesPlaceOn
+:takesPlaceOn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/taskPhase
+:taskPhase rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/toolUsed
+:toolUsed rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/Twin_OR/clean
+:clean rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/correctAlignment
+:correctAlignment rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/flat
+:flat rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/Twin_OR/phaseFailure
+:phaseFailure rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Phase .
+
+
+###  http://www.semanticweb.org/Twin_OR/phaseOrder
+:phaseOrder rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Phase .
+
+
+###  http://www.semanticweb.org/Twin_OR/stepFailure
+:stepFailure rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/Twin_OR/Action
+:Action rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Actor
+:Actor rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Event
+:Event rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Helper_Step
+:Helper_Step rdf:type owl:Class ;
+             rdfs:subClassOf :Step .
+
+
+###  http://www.semanticweb.org/Twin_OR/LegoBlock
+:LegoBlock rdf:type owl:Class ;
+           rdfs:subClassOf :Material .
+
+
+###  http://www.semanticweb.org/Twin_OR/LegoBoardPositions
+:LegoBoardPositions rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Manipulation
+:Manipulation rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Material
+:Material rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Phase
+:Phase rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Plan
+:Plan rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/RectangularLegoBlock
+:RectangularLegoBlock rdf:type owl:Class ;
+                      rdfs:subClassOf :LegoBlock .
+
+
+###  http://www.semanticweb.org/Twin_OR/SquareLegoBlock
+:SquareLegoBlock rdf:type owl:Class ;
+                 rdfs:subClassOf :LegoBlock .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step
+:Step rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Surface
+:Surface rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Task
+:Task rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Tool
+:Tool rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/Twin_OR/Vision
+:Vision rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/Twin_OR/A_Phase1
+:A_Phase1 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :hasStep :Step_A1_3 ,
+                   :Step_A1_4 ;
+          :phaseTask :Preparation ;
+          :phaseOrder "1"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/A_Phase2
+:A_Phase2 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :phaseTask :Initial_Assembly ;
+          :phaseOrder "2"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/A_Phase3
+:A_Phase3 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :alternativePhase :B_Phase1 ;
+          :hasStep :Step_A3_2 ;
+          :phaseTask :Assembly_Verification ;
+          :phaseFailure "false"^^xsd:boolean ;
+          :phaseOrder "3"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/A_Phase4
+:A_Phase4 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :alternativePhase :C_Phase1 ;
+          :hasStep :Step_A4_1 ,
+                   :Step_A4_2 ;
+          :phaseTask :Assembly_with_Robotic_Assistance ;
+          :phaseFailure "false"^^xsd:boolean ;
+          :phaseOrder "4"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/A_Phase5
+:A_Phase5 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :phaseTask :Assembly_Verification_with_Robotic_Assistance ;
+          :phaseOrder "5"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/Adjust_Microscope_Vision
+:Adjust_Microscope_Vision rdf:type owl:NamedIndividual ,
+                                   :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Assembly_Verification
+:Assembly_Verification rdf:type owl:NamedIndividual ,
+                                :Task .
+
+
+###  http://www.semanticweb.org/Twin_OR/Assembly_Verification_with_Robotic_Assistance
+:Assembly_Verification_with_Robotic_Assistance rdf:type owl:NamedIndividual ,
+                                                        :Task .
+
+
+###  http://www.semanticweb.org/Twin_OR/Assembly_with_Robotic_Assistance
+:Assembly_with_Robotic_Assistance rdf:type owl:NamedIndividual ,
+                                           :Task .
+
+
+###  http://www.semanticweb.org/Twin_OR/B_Phase1
+:B_Phase1 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :phaseTask :Initial_Assembly ;
+          :phaseOrder "1"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/B_Phase2
+:B_Phase2 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :phaseTask :Assembly_Verification ;
+          :phaseOrder "2"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/B_Phase3
+:B_Phase3 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :alternativePhase :C_Phase1 ;
+          :phaseTask :Assembly_with_Robotic_Assistance ;
+          :phaseFailure "false"^^xsd:boolean ;
+          :phaseOrder "3"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/B_Phase4
+:B_Phase4 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :phaseTask :Assembly_Verification_with_Robotic_Assistance ;
+          :phaseOrder "4"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/C_Phase1
+:C_Phase1 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :phaseTask :Reboot_Robotic_Arm ;
+          :phaseOrder "1"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/C_Phase2
+:C_Phase2 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :phaseTask :Assembly_with_Robotic_Assistance ;
+          :phaseOrder "2"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/C_Phase3
+:C_Phase3 rdf:type owl:NamedIndividual ,
+                   :Phase ;
+          :phaseTask :Assembly_Verification_with_Robotic_Assistance ;
+          :phaseOrder "3"^^xsd:int .
+
+
+###  http://www.semanticweb.org/Twin_OR/Check_and_Confirm
+:Check_and_Confirm rdf:type owl:NamedIndividual ,
+                            :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Check_the_Position_and_Correct_Orientation_of_the_Lego_Block
+:Check_the_Position_and_Correct_Orientation_of_the_Lego_Block rdf:type owl:NamedIndividual ,
+                                                                       :Action ;
+                                                              :performedInStep :Step_A3_1 .
+
+
+###  http://www.semanticweb.org/Twin_OR/Forceps
+:Forceps rdf:type owl:NamedIndividual ,
+                  :Tool .
+
+
+###  http://www.semanticweb.org/Twin_OR/Gather_Materials
+:Gather_Materials rdf:type owl:NamedIndividual ,
+                           :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Gather_Tools
+:Gather_Tools rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/Twin_OR/Grasping
+:Grasping rdf:type owl:NamedIndividual ,
+                   :Manipulation .
+
+
+###  http://www.semanticweb.org/Twin_OR/Helper_Step_A4_2_3_4
+:Helper_Step_A4_2_3_4 rdf:type owl:NamedIndividual ,
+                               :Helper_Step ;
+                      :actor :Robotic_Arm ,
+                             :Surgeon ;
+                      :inPhase :A_Phase4 ;
+                      :stepAction :Adjust_Microscope_Vision .
+
+
+###  http://www.semanticweb.org/Twin_OR/Identify_Correct_Lego
+:Identify_Correct_Lego rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/Twin_OR/Initial_Assembly
+:Initial_Assembly rdf:type owl:NamedIndividual ,
+                           :Task .
+
+
+###  http://www.semanticweb.org/Twin_OR/Lego_1
+:Lego_1 rdf:type owl:NamedIndividual ,
+                 :SquareLegoBlock .
+
+
+###  http://www.semanticweb.org/Twin_OR/Lego_2
+:Lego_2 rdf:type owl:NamedIndividual ,
+                 :SquareLegoBlock .
+
+
+###  http://www.semanticweb.org/Twin_OR/Lego_3
+:Lego_3 rdf:type owl:NamedIndividual ,
+                 :SquareLegoBlock .
+
+
+###  http://www.semanticweb.org/Twin_OR/Lego_4
+:Lego_4 rdf:type owl:NamedIndividual ,
+                 :RectangularLegoBlock .
+
+
+###  http://www.semanticweb.org/Twin_OR/Lego_5
+:Lego_5 rdf:type owl:NamedIndividual ,
+                 :RectangularLegoBlock .
+
+
+###  http://www.semanticweb.org/Twin_OR/Lego_Platform
+:Lego_Platform rdf:type owl:NamedIndividual ,
+                        :Material .
+
+
+###  http://www.semanticweb.org/Twin_OR/Lift
+:Lift rdf:type owl:NamedIndividual ,
+               :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Locate_the_Lego_Block_for_Placement
+:Locate_the_Lego_Block_for_Placement rdf:type owl:NamedIndividual ,
+                                              :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Micro_Vision
+:Micro_Vision rdf:type owl:NamedIndividual ,
+                       :Vision .
+
+
+###  http://www.semanticweb.org/Twin_OR/Middle_Left_Square_Pos
+:Middle_Left_Square_Pos rdf:type owl:NamedIndividual ,
+                                 :LegoBoardPositions .
+
+
+###  http://www.semanticweb.org/Twin_OR/Middle_Right_Square_Pos
+:Middle_Right_Square_Pos rdf:type owl:NamedIndividual ,
+                                  :LegoBoardPositions .
+
+
+###  http://www.semanticweb.org/Twin_OR/Nearest_Pos
+:Nearest_Pos rdf:type owl:NamedIndividual ,
+                      :LegoBoardPositions .
+
+
+###  http://www.semanticweb.org/Twin_OR/Note_Taking
+:Note_Taking rdf:type owl:NamedIndividual ,
+                      :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Nurse
+:Nurse rdf:type owl:NamedIndividual ,
+                :Actor .
+
+
+###  http://www.semanticweb.org/Twin_OR/Organize_Materials
+:Organize_Materials rdf:type owl:NamedIndividual ,
+                             :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Orient
+:Orient rdf:type owl:NamedIndividual ,
+                 :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Perform_Placing_the_Lego_Block_in_the_Correct_Orientation
+:Perform_Placing_the_Lego_Block_in_the_Correct_Orientation rdf:type owl:NamedIndividual ,
+                                                                    :Event ;
+                                                           :hasPlan :PlanA ,
+                                                                    :PlanB ,
+                                                                    :PlanC .
+
+
+###  http://www.semanticweb.org/Twin_OR/Pick_Up_the_Lego_Block
+:Pick_Up_the_Lego_Block rdf:type owl:NamedIndividual ,
+                                 :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/PlanA
+:PlanA rdf:type owl:NamedIndividual ,
+                :Plan ;
+       :hasPhase :A_Phase1 ,
+                 :A_Phase2 ,
+                 :A_Phase3 ,
+                 :A_Phase4 ,
+                 :A_Phase5 .
+
+
+###  http://www.semanticweb.org/Twin_OR/PlanB
+:PlanB rdf:type owl:NamedIndividual ,
+                :Plan ;
+       :hasPhase :B_Phase1 ,
+                 :B_Phase2 ,
+                 :B_Phase3 ,
+                 :B_Phase4 .
+
+
+###  http://www.semanticweb.org/Twin_OR/PlanC
+:PlanC rdf:type owl:NamedIndividual ,
+                :Plan ;
+       :hasPhase :C_Phase1 ,
+                 :C_Phase2 ,
+                 :C_Phase3 .
+
+
+###  http://www.semanticweb.org/Twin_OR/Position
+:Position rdf:type owl:NamedIndividual ,
+                   :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Position_Camera_In_Required_Position
+:Position_Camera_In_Required_Position rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/Twin_OR/Position_the_Lego_Block_on_Top_of_Corresponding_Lego_Block
+:Position_the_Lego_Block_on_Top_of_Corresponding_Lego_Block rdf:type owl:NamedIndividual ,
+                                                                     :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Preparation
+:Preparation rdf:type owl:NamedIndividual ,
+                      :Task .
+
+
+###  http://www.semanticweb.org/Twin_OR/Reboot_Robotic_Arm
+:Reboot_Robotic_Arm rdf:type owl:NamedIndividual ,
+                             :Task .
+
+
+###  http://www.semanticweb.org/Twin_OR/Recognize_and_Locate
+:Recognize_and_Locate rdf:type owl:NamedIndividual ,
+                               :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Robotic_Arm
+:Robotic_Arm rdf:type owl:NamedIndividual ,
+                      :Actor ;
+             :hasCapability :Micro_Vision .
+
+
+###  http://www.semanticweb.org/Twin_OR/Scribe
+:Scribe rdf:type owl:NamedIndividual ,
+                 :Actor .
+
+
+###  http://www.semanticweb.org/Twin_OR/Sense
+:Sense rdf:type owl:NamedIndividual ,
+                :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Sense_Errors
+:Sense_Errors rdf:type owl:NamedIndividual ,
+                       :Action .
+
+
+###  http://www.semanticweb.org/Twin_OR/Standard_Vision
+:Standard_Vision rdf:type owl:NamedIndividual ,
+                          :Vision .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A1_1
+:Step_A1_1 rdf:type owl:NamedIndividual ,
+                    :Step ;
+           :actor :Scribe ;
+           :co-occur :Step_A1_3 ,
+                     :Step_A1_4 ;
+           :inPhase :A_Phase1 ;
+           :stepAction :Note_Taking .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A1_2
+:Step_A1_2 rdf:type owl:NamedIndividual ;
+           :actor :Nurse ;
+           :co-occur :Step_A1_1 ;
+           :followedBy :Step_A1_3 ;
+           :inPhase :A_Phase1 ;
+           :stepAction :Gather_Tools ;
+           :toolUsed :Forceps .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A1_3
+:Step_A1_3 rdf:type owl:NamedIndividual ,
+                    :Step ;
+           :actor :Nurse ;
+           :materialUsed :Lego_4 ,
+                         :Lego_Platform ;
+           :stepAction :Gather_Materials ;
+           :takesPlaceOn :TableSurface .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A1_4
+:Step_A1_4 rdf:type owl:NamedIndividual ,
+                    :Step ;
+           :actor :Nurse ;
+           :follows :Step_A1_3 ;
+           :materialUsed :Lego_Platform ;
+           :stepAction :Organize_Materials .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A2_1
+:Step_A2_1 rdf:type owl:NamedIndividual ,
+                    :Step ;
+           :actor :Surgeon ;
+           :followedBy :Step_A2_2 ;
+           :inPhase :A_Phase2 ;
+           :stepAction :Identify_Correct_Lego .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A2_2
+:Step_A2_2 rdf:type owl:NamedIndividual ;
+           :actor :Surgeon ;
+           :followedBy :Step_A2_3 ;
+           :inPhase :A_Phase2 ;
+           :materialUsed :Lego_4 ;
+           :stepAction :Pick_Up_the_Lego_Block ;
+           :toolUsed :Forceps .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A2_3
+:Step_A2_3 rdf:type owl:NamedIndividual ;
+           :actor :Surgeon ;
+           :blockPosition :Nearest_Pos ;
+           :inPhase :A_Phase2 ;
+           :materialUsed :Lego_4 ;
+           :stepAction :Perform_Placing_the_Lego_Block_in_the_Correct_Orientation ;
+           :toolUsed :Forceps .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A2_4
+:Step_A2_4 rdf:type owl:NamedIndividual ;
+           :actor :Scribe ;
+           :co-occur :Step_A2_1 ,
+                     :Step_A2_2 ,
+                     :Step_A2_3 ;
+           :stepAction :Note_Taking .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A3_1
+:Step_A3_1 rdf:type owl:NamedIndividual ;
+           :actor :Surgeon ;
+           :inPhase :A_Phase3 .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A3_2
+:Step_A3_2 rdf:type owl:NamedIndividual ;
+           :actor :Scribe ;
+           :co-occur :Step_A3_1 ;
+           :stepAction :Note_Taking .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A4_1
+:Step_A4_1 rdf:type owl:NamedIndividual ;
+           :actor :Robotic_Arm ,
+                  :Surgeon ;
+           :stepAction :Position_Camera_In_Required_Position .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A4_2
+:Step_A4_2 rdf:type owl:NamedIndividual ;
+           :actor :Surgeon ;
+           :followedBy :Step_A4_3 ;
+           :helperStep :Helper_Step_A4_2_3_4 ;
+           :stepAction :Identify_Correct_Lego .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A4_3
+:Step_A4_3 rdf:type owl:NamedIndividual ;
+           :actor :Surgeon ;
+           :helperStep :Helper_Step_A4_2_3_4 ;
+           :inPhase :A_Phase4 ;
+           :stepAction :Pick_Up_the_Lego_Block .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A4_4
+:Step_A4_4 rdf:type owl:NamedIndividual ;
+           :actor :Surgeon ;
+           :follows :Step_A4_3 ;
+           :helperStep :Helper_Step_A4_2_3_4 ;
+           :inPhase :A_Phase4 ;
+           :stepAction :Perform_Placing_the_Lego_Block_in_the_Correct_Orientation ;
+           :stepFailure "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A4_5
+:Step_A4_5 rdf:type owl:NamedIndividual ;
+           :actor :Scribe ;
+           :co-occur :Step_A4_1 ,
+                     :Step_A4_2 ,
+                     :Step_A4_3 ,
+                     :Step_A4_4 ;
+           :inPhase :A_Phase5 ;
+           :stepAction :Note_Taking .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A5_1
+:Step_A5_1 rdf:type owl:NamedIndividual ;
+           :actor :Robotic_Arm ,
+                  :Surgeon ;
+           :stepAction :Check_the_Position_and_Correct_Orientation_of_the_Lego_Block ;
+           :correctAlignment "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/Twin_OR/Step_A5_2
+:Step_A5_2 rdf:type owl:NamedIndividual ;
+           :actor :Scribe ;
+           :co-occur :Step_A5_1 ;
+           :inPhase :A_Phase5 ;
+           :stepAction :Note_Taking .
+
+
+###  http://www.semanticweb.org/Twin_OR/Surface
+:Surface rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/Twin_OR/Surgeon
+:Surgeon rdf:type owl:NamedIndividual ,
+                  :Actor ;
+         :hasCapability :Grasping ,
+                        :Standard_Vision ,
+                        :Turning .
+
+
+###  http://www.semanticweb.org/Twin_OR/TableSurface
+:TableSurface rdf:type owl:NamedIndividual ,
+                       :Surface ;
+              :clean "true"^^xsd:boolean ;
+              :flat "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/Twin_OR/Turning
+:Turning rdf:type owl:NamedIndividual ,
+                  :Manipulation .
+
+
+###  http://www.semanticweb.org/Twin_OR/Upper_Left_Rectangular_Pos
+:Upper_Left_Rectangular_Pos rdf:type owl:NamedIndividual ,
+                                     :LegoBoardPositions .
+
+
+###  http://www.semanticweb.org/Twin_OR/Upper_Middle_Square_Pos
+:Upper_Middle_Square_Pos rdf:type owl:NamedIndividual ,
+                                  :LegoBoardPositions .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
