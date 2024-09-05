@@ -501,6 +501,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/Twin_OR/Phase"/>
         <alternativePhase rdf:resource="http://www.semanticweb.org/Twin_OR/B_Phase1"/>
         <hasStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A3_2"/>
+        <phaseStartStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A3_1"/>
         <phaseTask rdf:resource="http://www.semanticweb.org/Twin_OR/Assembly_Verification"/>
         <phaseFailure rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</phaseFailure>
         <phaseOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#int">3</phaseOrder>
@@ -546,7 +547,6 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Twin_OR/Assembly_Verification">
         <rdf:type rdf:resource="http://www.semanticweb.org/Twin_OR/Task"/>
-        <phaseStartStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A3_1"/>
     </owl:NamedIndividual>
     
 
