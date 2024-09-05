@@ -194,6 +194,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/Twin_OR/phaseStartStep -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Twin_OR/phaseStartStep">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/Twin_OR/hasStep"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/Twin_OR/Phase"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/Twin_OR/Step"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/Twin_OR/phaseTask -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Twin_OR/phaseTask">
@@ -467,6 +477,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/Twin_OR/Phase"/>
         <hasStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A1_3"/>
         <hasStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A1_4"/>
+        <phaseStartStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A1_2"/>
         <phaseTask rdf:resource="http://www.semanticweb.org/Twin_OR/Preparation"/>
         <phaseOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</phaseOrder>
     </owl:NamedIndividual>
@@ -477,6 +488,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Twin_OR/A_Phase2">
         <rdf:type rdf:resource="http://www.semanticweb.org/Twin_OR/Phase"/>
+        <phaseStartStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A2_1"/>
         <phaseTask rdf:resource="http://www.semanticweb.org/Twin_OR/Initial_Assembly"/>
         <phaseOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</phaseOrder>
     </owl:NamedIndividual>
@@ -503,6 +515,7 @@
         <alternativePhase rdf:resource="http://www.semanticweb.org/Twin_OR/C_Phase1"/>
         <hasStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A4_1"/>
         <hasStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A4_2"/>
+        <phaseStartStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A4_1"/>
         <phaseTask rdf:resource="http://www.semanticweb.org/Twin_OR/Assembly_with_Robotic_Assistance"/>
         <phaseFailure rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</phaseFailure>
         <phaseOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4</phaseOrder>
@@ -514,6 +527,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Twin_OR/A_Phase5">
         <rdf:type rdf:resource="http://www.semanticweb.org/Twin_OR/Phase"/>
+        <phaseStartStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A5_1"/>
         <phaseTask rdf:resource="http://www.semanticweb.org/Twin_OR/Assembly_Verification_with_Robotic_Assistance"/>
         <phaseOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#int">5</phaseOrder>
     </owl:NamedIndividual>
@@ -532,6 +546,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Twin_OR/Assembly_Verification">
         <rdf:type rdf:resource="http://www.semanticweb.org/Twin_OR/Task"/>
+        <phaseStartStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A3_1"/>
     </owl:NamedIndividual>
     
 
