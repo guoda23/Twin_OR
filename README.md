@@ -16,6 +16,10 @@ run.ipynb file.
 Before running the demo, ensure you have the following installed:
 
 - **Python** (version 3.6 or higher)
+- **Jupyter Notebook**: Required to run the `run.ipynb` file. You can install it using pip:
+  ```bash
+  pip install notebook
+  ```
 - **Required Python Libraries**:
   - `rdflib`
   - `pyshacl`
