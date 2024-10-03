@@ -5,6 +5,7 @@ Ontology engineering for the digital twin of the operating room (robotic arm use
 The core ontology describes various components of the operating room, in particular, a hierarchical structure of the medical procedure. This design safeguards the process, allowing the robotic arm to offer support through helper steps or to default to alternative plans when necessary during a medical procedure. The "Step" class is the lowest hierarchical component of the procedure, encapsulating relevant information that is pertinent at the time.
 
 The structure of the ontology includes classes, properties, and rules that govern the relationship between entities, ensuring consistency and logical correctness. A visual representation of the ontology can be seen below:
+
 ![OR Ontology Diagram](OR_Ontology.drawio.png)
 
 ## Demo
