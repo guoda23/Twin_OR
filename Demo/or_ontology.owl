@@ -5,7 +5,8 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:Twin_OR="http://www.semanticweb.org/Twin_OR/">
     <owl:Ontology rdf:about="http://www.semanticweb.org/Twin_OR/"/>
     
 
@@ -301,6 +302,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/Twin_OR/isFinalPhase -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Twin_OR/isFinalPhase">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/Twin_OR/phaseFailure -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/Twin_OR/phaseFailure">
@@ -530,6 +539,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/Twin_OR/Phase"/>
         <phaseStartStep rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A5_1"/>
         <phaseTask rdf:resource="http://www.semanticweb.org/Twin_OR/Assembly_Verification_with_Robotic_Assistance"/>
+        <isFinalPhase rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isFinalPhase>
         <phaseOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#int">5</phaseOrder>
     </owl:NamedIndividual>
     
@@ -1104,6 +1114,7 @@
         <actor rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase3"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
+        <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Check_the_Position_and_Correct_Orientation_of_the_Lego_Block"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
     </owl:NamedIndividual>
     
@@ -1125,6 +1136,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Twin_OR/Step_A4_1">
         <actor rdf:resource="http://www.semanticweb.org/Twin_OR/Robotic_Arm"/>
         <actor rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
+        <followedBy rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A4_2"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Position_Camera_In_Required_Position"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Robotic_Arm"/>
@@ -1172,7 +1184,6 @@
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Perform_Placing_the_Lego_Block_in_the_Correct_Orientation"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Robotic_Arm"/>
-        <stepFailure rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</stepFailure>
     </owl:NamedIndividual>
     
 
@@ -1234,7 +1245,6 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Twin_OR/TableSurface">
         <rdf:type rdf:resource="http://www.semanticweb.org/Twin_OR/Surface"/>
-        <clean rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</clean>
         <flat rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</flat>
     </owl:NamedIndividual>
     

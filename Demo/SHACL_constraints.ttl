@@ -5,22 +5,26 @@
 @prefix or:    <http://www.semanticweb.org/Twin_OR/> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 
-# Makes sure the surfaces are clean
+# Makes sure the surfaces are not dirty
 or:SurfaceCleanShape
     a sh:NodeShape ;
     sh:targetClass or:Surface ;  # Applies to all instances of Surface
     sh:property [              
-        sh:path or:clean ;        # Constrains the values of clean
-        sh:hasValue "true"^^xsd:boolean ;
+        sh:path or:clean ;
+        sh:not [        
+        sh:hasValue "false"^^xsd:boolean ; # alerts if not clean
+	];
     ] .
 
-# Makes sure the surfaces are flat
+# Alerts if a surface is not flat
 or:SurfaceCleanShape
     a sh:NodeShape ;
     sh:targetClass or:Surface ;  # Applies to all instances of Surface
     sh:property [              
-        sh:path or:flat ;        # Constrains the values of clean
-        sh:hasValue "true"^^xsd:boolean ;
+        sh:path or:flat ;
+        sh:not [        
+        sh:hasValue "false"^^xsd:boolean ; # alerts if not flat
+	];
     ] .
 
 # Makes sure the four-pinned LEGO block is used in a specific step (during picking up)
@@ -41,13 +45,15 @@ or:LegoInCorrectPositionShape
         sh:hasValue or:Nearest_Pos ;
     ] .
 
-# Check if the alignment of the pins is correct
+# Alert if alignment of the pins is incorrect
 or:CorrectAlignmentShape
     a sh:NodeShape ;
     sh:targetNode or:Step_A5_1 ;
-    sh:property [
+    sh:property [              
         sh:path or:correctAlignment ;
-        sh:hasValue "true"^^xsd:boolean ;
+        sh:not [        
+        sh:hasValue "false"^^xsd:boolean ; # alerts incorrect alignment
+	];
     ] .
 
 # Forceps present in the tool gathering phase
@@ -59,6 +65,7 @@ or:ToolShape
         sh:hasValue or:Forceps ;
     ] .
 
+# Makes sure some actor present has the required capability
 or:StepShape
     a sh:NodeShape ;
     sh:targetClass or:Step ;
@@ -72,3 +79,14 @@ or:StepShape
                 }
             }
         """ ;    ] .
+
+# Alerts if a step fails
+or:StepFailureShape
+    a sh:NodeShape ;
+    sh:targetClass or:Step ;  # Applies to all instances of Step
+    sh:property [              
+        sh:path or:stepFailure ;
+        sh:not [        
+        sh:hasValue "true"^^xsd:boolean ;
+	];
+    ] .

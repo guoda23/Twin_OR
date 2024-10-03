@@ -1,0 +1,75 @@
+{
+    "Step_A1_2": {
+        "description": "Tool usage step",
+        "action": "remove",
+        "message": "The forceps are missing. Please fetch them before proceeding to the next step.",
+        "triples": [
+            {
+                "subject": "Step_A1_2",
+                "predicate": "toolUsed",
+                "object": "Forceps"
+            }
+        ]
+    },
+    "Step_A1_3": {
+        "description": "Cleaning check step",
+        "action": "add",
+        "message": "The table surface is not clean. Please clean it before proceeding to the next step.",
+        "triples": [
+            {
+                "subject": "TableSurface",
+                "predicate": "clean",
+                "object": false
+            }
+        ]
+    },
+    "Step_A2_2": {
+        "description": "Material usage step",
+        "action": "add",
+        "message": "I see you grabbed the square lego block. For this step we need the rectagular lego block. Please fetch it instead.",
+        "triples": [
+            {
+                "subject": "Step_A2_2",
+                "predicate": "materialUsed",
+                "object": "Lego_1"
+            }
+        ]
+    },
+    "Step_A2_3": {
+        "description": "Block positioning step",
+        "action": "add",
+        "message": "I sense you placed the lego block in the wrong position (middle left square position). Please place it in the nearest position instead.",
+        "triples": [
+            {
+                "subject": "Step_A2_3",
+                "predicate": "blockPosition",
+                "object": "Middle_Left_Square_Pos"
+            }
+        ]
+    },
+    "Step_A4_4": {
+        "description": "Step failure check",
+        "action": "add",
+        "message": "Looks like you're struggling. Would you like me to adjusting microscope vision angle?",
+        "affirming help message": "Adjusting the microscope vision angle to position 7",
+        "triples": [
+            {
+                "subject": "Step_A4_4",
+                "predicate": "stepFailure",
+                "object": true
+            }
+        ]
+    },
+    "Step_A5_1": {
+        "description": "Alignment check step",
+        "action": "add",
+        "message": "The alignment is incorrect. Please try again.",
+        "triples": [
+            {
+                "subject": "Step_A5_1",
+                "predicate": "correctAlignment",
+                "object": false
+            }
+        ]
+    }
+}
