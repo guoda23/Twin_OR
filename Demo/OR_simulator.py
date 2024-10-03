@@ -3,7 +3,6 @@ from rdflib.namespace import RDF, RDFS, OWL, XSD
 from pyshacl import validate
 import time
 import queries
-import random
 from owlready2 import get_ontology, sync_reasoner, sync_reasoner_pellet
 import json
 
@@ -172,7 +171,7 @@ class ORSimulator:
         else:
             step_action_msg = "s (" + ", ".join(step_actions[:-1]) + " and " + step_actions[-1] + ") are "
 
-        process_choice = input("Current step{}finished should we progress to the next step?".format(str(step_action_msg))).strip().lower()
+        process_choice = input("Current step{}finished. Would you like to progress to the next step?".format(str(step_action_msg))).strip().lower()
 
         if process_choice == "yes":
             self.proceed_to_next_step()
