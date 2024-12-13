@@ -103,4 +103,70 @@ def is_final_phase(current_phase):
     """
     return result
 
+def get_tools_for_steps(steps):
+    step_conditions = ",".join(f"or:{step}" for step in steps)
+    result = f"""
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX or: <http://www.semanticweb.org/Twin_OR/>
+    SELECT DISTINCT ?tool WHERE {{
+        {{
+            ?step or:toolUsed ?tool .
+            FILTER(?step IN ({step_conditions}))
+        }}
+        UNION
+        {{
+            ?tool or:toolUsedInStep ?step .
+            FILTER(?current_step IN ({step_conditions}))
+        }}
+    }} LIMIT 100
+    """
+    return result
+
+def get_actors_for_steps(steps):
+    step_conditions = ",".join(f"or:{step}" for step in steps)
+    result = f"""
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX or: <http://www.semanticweb.org/Twin_OR/>
+    SELECT DISTINCT ?actor WHERE {{
+        {{
+            ?step or:actor ?actor .
+            FILTER(?step IN ({step_conditions}))
+        }}
+        UNION
+        {{
+            ?actor or:actsIn ?step .
+            FILTER(?current_step IN ({step_conditions}))
+        }}
+    }} LIMIT 100
+    """
+    return result
+
+def get_capabilities_for_steps(steps):
+    step_conditions = ",".join(f"or:{step}" for step in steps)
+    result = f"""
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX or: <http://www.semanticweb.org/Twin_OR/>
+    SELECT DISTINCT ?capability WHERE {{
+        {{
+            ?step or:requiresCapability ?capability .
+            FILTER(?step IN ({step_conditions}))
+        }}
+    }} LIMIT 100
+    """
+    return result
+
+def get_materials_for_steps(steps):
+    step_conditions = ",".join(f"or:{step}" for step in steps)
+    result = f"""
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX or: <http://www.semanticweb.org/Twin_OR/>
+    SELECT DISTINCT ?material WHERE {{
+        {{
+            ?step or:rmaterialUsed ?material .
+            FILTER(?step IN ({step_conditions}))
+        }}
+    }} LIMIT 100
+    """
+    return result
+
     
