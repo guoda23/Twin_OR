@@ -82,3 +82,23 @@ def question_mode(or_simulator_instance, question):  #TODO: list the capabilitie
             print(f"Setting camera angle to position {position}.")
     else:
         print("Sorry, I don't know how to answer that question.")
+
+def display_question_menu():
+    """
+    Display a menu of possible questions the engine can answer.
+
+    Outputs:
+        Prints the menu to the console.
+    """
+    menu = """
+    \nIn question mode.
+    You can ask questions about the simulation, such as:
+    - What is the current phase or step of the simulation?
+    - What actions need to be performed in the current step?
+    - Can you explain the purpose of a specific phase or step?
+    - Are there any violations or issues in the current step? How can they be resolved?
+    - What are the next steps or phases in the simulation?
+    - How does the simulation validate the ontology?
+    - Can you summarize the progress of the procedure so far?
+    """
+    print(menu)

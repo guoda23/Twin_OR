@@ -8,7 +8,7 @@ from pyshacl import validate
 #local imports
 import queries
 from ontology_utils import load_and_materialize_ontology, parse_json_to_rdflib, query_result_to_list, get_label_from_uri
-from question_mode import question_mode
+from question_mode import question_mode, display_question_menu
 
 
 OR = Namespace("http://www.semanticweb.org/Twin_OR/")
@@ -552,7 +552,8 @@ class ORSimulator:
         if self.listener:  # Stop the listener while in question mode
             self.listener.stop()
 
-        question = input('\nIn question mode. What is your question?\n').strip().lower()
+        display_question_menu()
+        question = input('What is your question?\n').strip().lower()
         question_mode(self, question)
 
         self.in_question_mode = False
