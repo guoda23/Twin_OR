@@ -223,15 +223,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/Twin_OR/requiresTool -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Twin_OR/requiresTool">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/Twin_OR/toolUsed"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.semanticweb.org/Twin_OR/stepAction -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Twin_OR/stepAction">
@@ -263,7 +254,15 @@
 
     <!-- http://www.semanticweb.org/Twin_OR/toolUsed -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Twin_OR/toolUsed"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Twin_OR/toolUsed">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/Twin_OR/toolUsedInStep"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Twin_OR/toolUsedInStep -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Twin_OR/toolUsedInStep"/>
     
 
 
@@ -851,6 +850,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/Twin_OR/Pen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Twin_OR/Pen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Twin_OR/Tool"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/Twin_OR/Perform_Placing_the_Lego_Block_in_the_Correct_Orientation -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Twin_OR/Perform_Placing_the_Lego_Block_in_the_Correct_Orientation">
@@ -965,6 +972,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Twin_OR/Scribe">
         <rdf:type rdf:resource="http://www.semanticweb.org/Twin_OR/Actor"/>
+        <hasCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
     </owl:NamedIndividual>
     
 
@@ -1002,7 +1010,9 @@
         <co-occur rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A1_4"/>
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase1"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Scribe"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Note_Taking"/>
+        <toolUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Pen"/>
     </owl:NamedIndividual>
     
 
@@ -1015,6 +1025,7 @@
         <followedBy rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A1_3"/>
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase1"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Gather_Tools"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
         <toolUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Forceps"/>
@@ -1030,6 +1041,7 @@
         <materialUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Lego_4"/>
         <materialUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Lego_Platform"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Gather_Materials"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
         <takesPlaceOn rdf:resource="http://www.semanticweb.org/Twin_OR/TableSurface"/>
@@ -1045,6 +1057,7 @@
         <follows rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A1_3"/>
         <materialUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Lego_Platform"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Organize_Materials"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
     </owl:NamedIndividual>
@@ -1059,6 +1072,7 @@
         <followedBy rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A2_2"/>
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase2"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Identify_Correct_Lego"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
     </owl:NamedIndividual>
@@ -1073,6 +1087,8 @@
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase2"/>
         <materialUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Lego_4"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Grasping"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Pick_Up_the_Lego_Block"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
         <toolUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Forceps"/>
@@ -1088,6 +1104,9 @@
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase2"/>
         <materialUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Lego_4"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Grasping"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Turning"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Perform_Placing_the_Lego_Block_in_the_Correct_Orientation"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
         <toolUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Forceps"/>
@@ -1103,7 +1122,9 @@
         <co-occur rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A2_2"/>
         <co-occur rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A2_3"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Scribe"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Note_Taking"/>
+        <toolUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Pen"/>
     </owl:NamedIndividual>
     
 
@@ -1114,6 +1135,7 @@
         <actor rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase3"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Check_the_Position_and_Correct_Orientation_of_the_Lego_Block"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
     </owl:NamedIndividual>
@@ -1126,7 +1148,9 @@
         <actor rdf:resource="http://www.semanticweb.org/Twin_OR/Scribe"/>
         <co-occur rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A3_1"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Scribe"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Note_Taking"/>
+        <toolUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Pen"/>
     </owl:NamedIndividual>
     
 
@@ -1138,6 +1162,8 @@
         <actor rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
         <followedBy rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A4_2"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Micro_Vision"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Position_Camera_In_Required_Position"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Robotic_Arm"/>
     </owl:NamedIndividual>
@@ -1166,9 +1192,11 @@
         <hasHelperStep rdf:resource="http://www.semanticweb.org/Twin_OR/Helper_Step_A4_2_3_4"/>
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase4"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Grasping"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Pick_Up_the_Lego_Block"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Robotic_Arm"/>
+        <toolUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Forceps"/>
     </owl:NamedIndividual>
     
 
@@ -1181,9 +1209,12 @@
         <hasHelperStep rdf:resource="http://www.semanticweb.org/Twin_OR/Helper_Step_A4_2_3_4"/>
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase4"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Surgeon"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Grasping"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Turning"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Perform_Placing_the_Lego_Block_in_the_Correct_Orientation"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Nurse"/>
         <supportingTeamMember rdf:resource="http://www.semanticweb.org/Twin_OR/Robotic_Arm"/>
+        <toolUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Forceps"/>
     </owl:NamedIndividual>
     
 
@@ -1198,7 +1229,9 @@
         <co-occur rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A4_4"/>
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase5"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Scribe"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Note_Taking"/>
+        <toolUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Pen"/>
     </owl:NamedIndividual>
     
 
@@ -1225,7 +1258,9 @@
         <co-occur rdf:resource="http://www.semanticweb.org/Twin_OR/Step_A5_1"/>
         <inPhase rdf:resource="http://www.semanticweb.org/Twin_OR/A_Phase5"/>
         <performer rdf:resource="http://www.semanticweb.org/Twin_OR/Scribe"/>
+        <requiresCapability rdf:resource="http://www.semanticweb.org/Twin_OR/Standard_Vision"/>
         <stepAction rdf:resource="http://www.semanticweb.org/Twin_OR/Note_Taking"/>
+        <toolUsed rdf:resource="http://www.semanticweb.org/Twin_OR/Pen"/>
     </owl:NamedIndividual>
     
 
