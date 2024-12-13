@@ -1,7 +1,8 @@
 import queries
 from ontology_utils import query_result_to_list
+import re
 
-def question_mode(or_simulator_instance, question):   
+def question_mode(or_simulator_instance, question):  #TODO: list the capabilities at the start
     """
     Handle user questions during simulation.
 
@@ -61,6 +62,23 @@ def question_mode(or_simulator_instance, question):
             else:
                 print(f"Materials needed for the next step: {', '.join(next_step_materials)}")
         else:
-            print("Sorry, I don't know how to answer that question.")
+            print("Sorry, I didn't understand the question.")
+    elif 'zoom' in question:
+        if 'in' in question:
+            print("Zooming in...")
+        elif 'out' in question:
+            print("Zooming out...")
+        else:
+            print("Sorry, I didn't understand the question.")
+    elif 'angle' or 'position':
+        #checks if there is an already specified position
+        match = re.search(r'\d+', question) 
+        contains_integer = bool(match) 
+
+        if contains_integer:
+            print(f"Setting camera angle to position {int(match.group())}.")
+        else:
+            position = input("What position would you like to set the camera to? ")
+            print(f"Setting camera angle to position {position}.")
     else:
         print("Sorry, I don't know how to answer that question.")
