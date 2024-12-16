@@ -2,7 +2,7 @@ import queries
 from ontology_utils import query_result_to_list
 import re
 
-def question_mode(or_simulator_instance, question):  #TODO: list the capabilities at the start
+def question_mode(or_simulator_instance, question):
     """
     Handle user questions during simulation.
 

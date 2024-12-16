@@ -476,18 +476,19 @@ class ORSimulator:
         """
 
         try:
-            if self.in_question_mode:
-                return
-
-            if key == keyboard.Key.tab and self.ongoing_procedure and not self.violation_occurred: #to the next step/phase
-                self.advance_simulation()
-            elif key.char == '?' and not self.violation_occurred and not self.in_question_mode:
-                self.ask_question()
-            elif key == keyboard.Key.esc:
+            if key == keyboard.Key.esc:
                 self.ongoing_procedure = False
                 print("\nProcedure terminated.") 
                 self.stop_listener()
                 return False
+            
+            if self.in_question_mode:
+                return
+            
+            if key == keyboard.Key.tab and self.ongoing_procedure and not self.violation_occurred: #to the next step/phase
+                self.advance_simulation()
+            elif key.char == '?' and not self.violation_occurred and not self.in_question_mode:
+                self.ask_question()
         except AttributeError:
             pass
 
