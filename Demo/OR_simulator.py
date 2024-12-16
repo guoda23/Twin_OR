@@ -188,8 +188,8 @@ class ORSimulator:
         else:
             step_action_msg = "s (" + ", ".join(step_actions[:-1]) + " and " + step_actions[-1] + ") are "
 
-        print("Current step{}finished.\n[Press 'Tab' to proceed to the next step and '?' to ask a question.]".format(str(step_action_msg)))
-    
+        print("Current step{}finished.\n[Press 'Tab' to proceed; '?' to ask another question; 'esc' to exit the simulation.]".format(str(step_action_msg)))
+
 
     def validate(self):
         """
@@ -207,7 +207,7 @@ class ORSimulator:
                 validation_report (str): A human-readable report detailing validation results.
         """
 
-        is_valid, _, validation_report = validate(self.or_graph, #TODO: distinction between data graph and schema graph (?)
+        is_valid, _, validation_report = validate(self.or_graph, #TODO: can add a distinction between data graph and schema graph
         shacl_graph= self.shacl_shapes_graph,
         ont_graph=None,
         inference='rdfs',
@@ -369,7 +369,7 @@ class ORSimulator:
 
         Retrieves the current phase and step details and incorporates them into the 
         introductory message. Provides an overview of the simulation's purpose and 
-        instructions for interacting with the system. #TODO: add more instructions
+        instructions for interacting with the system.
 
         Args:
             None
@@ -382,12 +382,12 @@ class ORSimulator:
         step_actions = self.get_step_actions(self.current_steps)
 
         if len(step_actions) == 1:
-            step_action_msg = " is " + str(step_actions[0])
+            step_action_msg = " is " + str(step_actions[0]) + "."
         else:
-            step_action_msg = "s are " + ", ".join(step_actions[:-1]) + " and " + step_actions[-1]
+            step_action_msg = "s are " + ", ".join(step_actions[:-1]) + " and " + step_actions[-1] + "."
 
-
-        print(f"\nLet's begin the procedure. We're starting with phase 1, {task_action}.")
+        print("\nWelcome to the Operation Room Simulation! I will guide you through the steps of the procedure.")
+        print(f"Let's begin. We're starting with phase 1, {task_action}.")
         print(f"The first step{str(step_action_msg)}")
 
 
@@ -458,7 +458,7 @@ class ORSimulator:
         self.listener.start()
 
     
-    def on_key_press(self, key): #TODO: debug esc termination
+    def on_key_press(self, key):
         """
         Handle key press events during the simulation.
 
@@ -558,7 +558,7 @@ class ORSimulator:
         question_mode(self, question)
 
         self.in_question_mode = False
-        print("[Press 'Tab' to proceed and '?' to ask another question.]\n")
+        print("[Press 'Tab' to proceed; '?' to ask another question; 'esc' to exit the simulation.]\n")
         
         self.setup_keyboard_listeners() #restart the listener after question mode done
 
@@ -609,6 +609,6 @@ class ORSimulator:
         self.process_sensor_data_and_advance() 
 
         while self.ongoing_procedure:
-            time.sleep(0.1) #TODO: check if necessary
+            time.sleep(0.1) #for performance
 
         self.stop_listener()
