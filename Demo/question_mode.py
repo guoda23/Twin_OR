@@ -1,7 +1,8 @@
 import queries
 from ontology_utils import query_result_to_list
+import re
 
-def question_mode(or_simulator_instance, question):   
+def question_mode(or_simulator_instance, question):
     """
     Handle user questions during simulation.
 
@@ -36,14 +37,6 @@ def question_mode(or_simulator_instance, question):
                 print("I don't know of any tools needed for the next step.")
             else:
                 print(f"Tools needed for the next step: {', '.join(next_step_tools)}")
-        elif 'actor' in question: #ask about which actors need to be present
-            query_result = or_simulator_instance.or_graph.query(queries.get_actors_for_steps(next_steps))
-            next_step_actors = query_result_to_list(query_result)
-
-            if len(next_step_actors) == 0:
-                print("I don't know of any actors needed for the next step.")
-            else:
-                print(f"Actors needed for the next step: {', '.join(next_step_actors)}")
         elif 'capability' in question or 'capabilities' in question: #ask about capabilities necessary for next step
             query_result = or_simulator_instance.or_graph.query(queries.get_capabilities_for_steps(next_steps))
             next_step_capabilities = query_result_to_list(query_result)   
@@ -52,6 +45,15 @@ def question_mode(or_simulator_instance, question):
                 print("I don't know of any capabilities needed for the next step.")
             else:
                 print(f"Actors in the next step(s) must have the following capabilities: {', '.join(next_step_capabilities)}")
+        elif 'actor' in question: #ask about which actors need to be present
+            query_result = or_simulator_instance.or_graph.query(queries.get_actors_for_steps(next_steps))
+            next_step_actors = query_result_to_list(query_result)
+
+            if len(next_step_actors) == 0:
+                print("I don't know of any actors needed for the next step.")
+            else:
+                print(f"Actors needed for the next step: {', '.join(next_step_actors)}")
+
         elif 'material' in question: #ask about materials needed for next step
             query_result = or_simulator_instance.or_graph.query(queries.get_materials_for_steps(next_steps))
             next_step_materials = query_result_to_list(query_result)   
@@ -61,6 +63,43 @@ def question_mode(or_simulator_instance, question):
             else:
                 print(f"Materials needed for the next step: {', '.join(next_step_materials)}")
         else:
-            print("Sorry, I don't know how to answer that question.")
+            print("Sorry, I didn't understand the question.")
+    elif 'zoom' in question:
+        if 'in' in question:
+            print("Zooming in...")
+        elif 'out' in question:
+            print("Zooming out...")
+        else:
+            print("Sorry, I didn't understand the question.")
+    elif 'angle' or 'position':
+        #checks if there is an already specified position
+        match = re.search(r'\d+', question) 
+        contains_integer = bool(match) 
+
+        if contains_integer:
+            print(f"Setting camera angle to position {int(match.group())}...")
+        else:
+            position = input("What position would you like to set the camera to? ")
+            print(f"Setting camera angle to position {position}...")
     else:
         print("Sorry, I don't know how to answer that question.")
+
+
+def display_question_menu():
+    """
+    Display a menu of possible questions the engine can answer.
+
+    Outputs:
+        Prints the menu to the console.
+    """
+    menu = """
+    \nIn question mode.
+    You can ask questions about the simulation, such as:
+    - What tools are needed to perform the next step?
+    - What actors are required for the next step?
+    - What capabilities should the actors have in the next step?
+    - What materials do I need for the next step?
+    - Can you zoom in/out?
+    - Can you adjust the angle/position of the camera?
+    """
+    print(menu)
